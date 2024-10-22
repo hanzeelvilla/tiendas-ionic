@@ -12,7 +12,9 @@ VENTANAS :
 
 TODO registrarse e iniciar sesión
 - [x] Inputs para iniciar sesión con usuario y pswd al presionar el botón "iniciar sesión"
-- [ ] Inputs (dentro de un modal) para crear una cuenta que se active al presionar el botón registrarse
-- [ ] No se puede repetir la tienda y usuario al registrarse, ni se pueden dejar campos en blanco
-- [ ] Validar que exista el usuario al iniciar sesión
+- [x] Inputs (dentro de un modal) para crear una cuenta que se active al presionar el botón registrarse
+- [x] No se puede repetir la tienda y usuario al registrarse, ni se pueden dejar campos en blanco
+- [x] Validar que exista el usuario al iniciar sesión
+- [ ] Guardar en localstorage el array de usuarios y el contador de id
+- [ ] Recuperar del localstorage el array de usuarios y el contador de id
 - [ ] Bloquear las demás ventanas para que solo se pueda acceder iniciando sesión 
