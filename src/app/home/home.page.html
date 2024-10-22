@@ -13,5 +13,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <p>Hola inicia sesión nena</p>
+  <ion-item>
+    <ion-input label="Usuario" labelPlacement="stacked" [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Contraseña" labelPlacement="stacked" type="password" [(ngModel)]="pswd"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="login()">Iniciar sesión</ion-button>
+  <ion-button expand="block" (click)="signUp()">Registrarse</ion-button>
 </ion-content>

@@ -11,7 +11,7 @@ VENTANAS :
 - [ ] CRUD reportes
 
 TODO registrarse e iniciar sesión
-- [ ] Inputs para iniciar sesión con usuario y pswd al presionar el botón "iniciar sesión"
+- [x] Inputs para iniciar sesión con usuario y pswd al presionar el botón "iniciar sesión"
 - [ ] Inputs (dentro de un modal) para crear una cuenta que se active al presionar el botón registrarse
 - [ ] No se puede repetir la tienda y usuario al registrarse, ni se pueden dejar campos en blanco
 - [ ] Validar que exista el usuario al iniciar sesión
