@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonItem, IonButton, IonButtons, IonModal, IonAlert, AlertController } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { User } from '../models/user.interface';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,6 @@ export class HomePage {
   @ViewChild(IonModal) modal?: IonModal;
 
   users: User[] = [];
-  contadorUsuarios: number = 1; //simular un autoincrement
-
   loginUsername: string = "";
   loginPswd: string = ""
   // variables para registrarse
@@ -27,11 +26,7 @@ export class HomePage {
   image: string = "";
 
   constructor(private alertController: AlertController) {
-    // metiendo usuarios para probar que funciona
-    const storeImg = "https://d2sapt5dytmohl.cloudfront.net/images/upload/64712/sml/6585920a2f12e7.51221906.jpg"
-    this.users = [
-      {id: 0, name: "Hanzeel", username: "Walle", pswd: "1234", store: "adhesivos de colima", image:storeImg}
-    ]
+    this.readUsersLocalStorage();
   }
 
   login() {
@@ -72,7 +67,7 @@ export class HomePage {
         this.alert("Error", "Las contraseñas tienen que ser iguales");
       else {
         const newUser: User = {
-          id: this.contadorUsuarios,
+          id: uuidv4(),
           name: this.name,
           username: this.username,
           pswd: this.pswd,
@@ -80,8 +75,8 @@ export class HomePage {
           image: this.image
         }
 
-        this.contadorUsuarios++;
         this.users.push(newUser);
+        this.saveUsersLocalStorage();
 
         this.alert("Agregado", `Usuario ${this.username} creado`);
         this.closeModal();
@@ -117,4 +112,18 @@ export class HomePage {
     this.store = "";
     this.image = "";
   }
+  /* ------------------------------ LOCAL STORAGE ----------------------------- */
+
+  readUsersLocalStorage() {
+    const usersLocalStorage = localStorage.getItem("users");
+
+    if(usersLocalStorage) {
+      this.users = JSON.parse(usersLocalStorage);
+    }
+  }
+
+  saveUsersLocalStorage() {
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
 }
+
