@@ -3,6 +3,8 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonItem, IonButt
 import { FormsModule } from '@angular/forms';
 import { User } from '../models/user.interface';
 import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +27,7 @@ export class HomePage {
   store: string = "";
   image: string = "";
 
-  constructor(private alertController: AlertController) {
+  constructor(private alertController: AlertController, private authService: AuthService, private router: Router) {
     this.readUsersLocalStorage();
   }
 
@@ -35,12 +37,15 @@ export class HomePage {
       this.alert("Error", "Nombre de usuario o contraseña incorrecta");
     }
     else {
-      let user = this.users.find(user => user.username == this.loginUsername && user.pswd == this.loginPswd)
-      
-      if(user)
-        console.log("Usuario encontrado", user);
-      else 
+      const success = this.authService.login(this.loginUsername, this.loginPswd);
+
+      if (success) {
+        console.log("Usuario logeado");
+        this.router.navigate(["/menu"])
+      }
+      else {
         this.alert("Error", "Nombre de usuario o contraseña incorrecta");
+      }
     }
   }
 
@@ -68,12 +73,12 @@ export class HomePage {
       else {
         const newUser: User = {
           id: uuidv4(),
-          name: this.name,
-          username: this.username,
-          pswd: this.pswd,
-          store: this.store,
-          image: this.image
-        }
+          name: this.name.trim(),
+          username: this.username.trim(),
+          pswd: this.pswd.trim(),
+          store: this.store.trim(),
+          image: this.image.trim()
+        };
 
         this.users.push(newUser);
         this.saveUsersLocalStorage();
