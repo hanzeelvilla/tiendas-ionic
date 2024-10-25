@@ -1,47 +1,9 @@
-<ion-menu content-id="main-content" side="start">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menú</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list>
-      <ion-item routerLink="/home">Productos</ion-item>
-      <ion-item routerLink="/about">Clientes</ion-item>
-      <ion-item routerLink="/contact">Ventas</ion-item>
-      <ion-item routerLink="/contact">Reportes</ion-item>
-      <ion-buttons class="ion-padding-right">
-        <ion-button (click)="logout()" color="danger">Cerrar sesión</ion-button>
-      </ion-buttons>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Menú</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="logout()" color="danger">Cerrar sesión</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-navbar [title]="'Menu'"></app-navbar>
 
 <ion-content [fullscreen]="true" id="main-content">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div class="content-wrapper">
     <h1>Bienvenido</h1>
     <h2>{{ store }}</h2>
     <img [src]="image" alt="imagen de la imagen">
   </div>
-
-
 </ion-content>

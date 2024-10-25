@@ -1,0 +1,31 @@
+<ion-menu content-id="main-content" side="start">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="clickable-item" (click)="goToMenu()">Menu</ion-title> 
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="clickable-item" (click)="goToProducts()">Productos</ion-item>
+      <ion-item class="clickable-item">Clientes</ion-item>
+      <ion-item class="clickable-item">Ventas</ion-item>
+      <ion-item class="clickable-item">Reportes</ion-item>
+      <ion-buttons class="ion-padding-right">
+        <ion-button (click)="logout()" color="danger">Cerrar sesión</ion-button>
+      </ion-buttons>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title> 
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" color="danger">Cerrar sesión</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

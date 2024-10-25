@@ -1,28 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonMenu, IonList, IonItem, IonRouterOutlet, IonButtons, IonMenuButton, IonIcon, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
   standalone: true,
-  imports: [IonButton, IonIcon, IonButtons, IonRouterOutlet, IonItem, IonList, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonMenu, IonMenuButton]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, NavbarComponent]
 })
 export class MenuPage implements OnInit {
   store: string = "";
   image: string = "";
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
   ngOnInit() {
     console.log('Menu se ha inicializado');
     this.loadUserData();
-  }
-
-  logout() {
-    this.authService.logout();
   }
 
   loadUserData() {
@@ -33,6 +29,5 @@ export class MenuPage implements OnInit {
       this.store = user.store;
       this.image = user.image; 
     }
-
   }
 }
